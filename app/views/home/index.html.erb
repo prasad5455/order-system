@@ -1,0 +1,10 @@
+<div class="product_list">
+  <h4><u>Available Products</u></h4>
+  <ul style="margin-top: 20px;">
+    <% @products.each do |product| %>
+      <li><h6><%= product.name %></h6>Price: <%= product.price.to_i %>/- <%= link_to 'Order Now', store_path(product.store_id), class: 'btn btn-success btn-sm', title: 'Click here to Order Now' %></li>
+      <br>
+      <br>
+    <% end %>
+  </ul>
+</div>

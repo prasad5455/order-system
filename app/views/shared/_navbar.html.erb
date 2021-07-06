@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+  <a class="navbar-brand" style="font-weight: bold; font-size: 30px;" href="/">My Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <div class="nav-link"><b><%= current_user.email if current_user.present? %></b></div>
+        </li>
+        <% if current_user.admin? %>
+          <li class="nav-item">
+            <%= link_to 'Stores List', stores_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'New Store', new_store_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to 'All Products', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <% if !request.path.include?('sign_in') %>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+        <% if !request.path.include?('sign_up') %>
+          <li class="nav-item">
+            <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</nav>

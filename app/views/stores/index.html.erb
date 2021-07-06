@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<div class="show_page">
+  <h3><u>Stores</u></h3>
+  <% @stores.each do |store| %>
+    <h6><b><%= link_to store.name, store %></b></h6>
+    <ul>
+      <li><%= store.address %></li>
+      <li><%= store.contact %></li>
+    </ul>
+    <% if current_user.admin? %>
+      <%= link_to 'Edit Store Details', edit_store_path(store), class: 'btn btn-warning btn-sm' %> | 
+      <%= link_to 'Remove Store', store, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+    <% end %>
+    <hr>
+  <% end %>
+  <br>
+  <br>
+</div>
