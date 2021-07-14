@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: %i[ show edit update destroy ]
-  before_action :verify_admin_role, except: :show
+  #before_action :verify_admin_role, except: :show
 
   # GET /stores or /stores.json
   def index
@@ -9,6 +9,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1 or /stores/1.json
   def show
+    @menu_items = @store.items.group_by(&:category)
   end
 
   # GET /stores/new

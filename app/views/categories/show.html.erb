@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<div class="show_page">
+  <ul>
+    <h4>
+      <%= @category.name %>
+    </h4>
+    <li>
+      <div>
+        <strong>About:</strong>
+        <br>
+        <%= @category.description %>
+      </div>
+    </li>
+    <br>
+    <br>
+    <% if current_user.admin? %>
+      <%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-warning btn-sm' %> | 
+      <%= link_to 'Categories', categories_path, class: 'btn btn-info btn-sm' %> | 
+      <%= link_to 'Remove Category', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+    <% end %>
+  </ul>
+</div>

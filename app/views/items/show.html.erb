@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<div class="show_page">
+  <h4>
+    <%= @item.name %>
+  </h4>
+  <ul>
+    <li>
+      <div>
+        <strong>About item:</strong>
+        <br>
+        <%= @item.description %>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Price:</strong>
+        <br>
+        <%= @item.price %>
+      </div>
+    </li>
+    <br>
+    <br>
+    <% if current_user.admin? %>
+      <%= link_to 'Edit', edit_store_item_path(id: @item.id, store_id: @item.store_id), class: 'btn btn-warning btn-sm' %> | 
+      <%= link_to 'Store', store_items_path(store_id: @item.store_id), class: 'btn btn-primary btn-sm' %> | 
+      <%= link_to 'Delete item', store_item_path(id: @item.id, store_id: @item.store_id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+    <% end %>
+  </ul>
+</div>

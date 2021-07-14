@@ -9,5 +9,6 @@
   User.create(email: "admin_#{num}@example.com",admin_role: true, password: 'test_password')
   User.create(email: "user_#{num}@example.com", admin_role: false, password: 'test_password')
   Store.create(name: "Store #{num}", address: "Street #{num}, Area #{num}, City #{num}", contact: 9988776655)
-  Product.create(name: "Product #{num}", description: "Test Desciption about Product #{num}", price: 250, store_id: num)
+  Category.create(id: num, name: "Category #{num}", description: "Test Desciption about category #{num}") if num < 4
+  Item.create(name: "Item #{num}", description: "Test Desciption about Item #{num}", price: 250, store_id: num, category_id: (1..3).to_a.sample)
 end

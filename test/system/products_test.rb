@@ -1,17 +1,17 @@
 require "application_system_test_case"
 
-class ProductsTest < ApplicationSystemTestCase
+class itemsTest < ApplicationSystemTestCase
   setup do
-    @product = products(:one)
+    @product = items(:one)
   end
 
   test "visiting the index" do
-    visit products_url
-    assert_selector "h1", text: "Products"
+    visit items_url
+    assert_selector "h1", text: "items"
   end
 
   test "creating a Product" do
-    visit products_url
+    visit items_url
     click_on "New Product"
 
     fill_in "Description", with: @product.description
@@ -25,7 +25,7 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test "updating a Product" do
-    visit products_url
+    visit items_url
     click_on "Edit", match: :first
 
     fill_in "Description", with: @product.description
@@ -39,7 +39,7 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Product" do
-    visit products_url
+    visit items_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

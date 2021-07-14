@@ -1,0 +1,46 @@
+<% if request.path.include?('new')
+    url = store_items_path(store_id: @item.store_id)
+  else
+    url = edit_store_item_path(id: @item.id, store_id: @item.store_id)
+  end %>
+<%= form_with(model: @item, url: url) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <br>
+    <%= form.text_field :price %>
+  </div>
+  <div class="field">
+    <%= form.label :category_id %>
+    <br>
+    <%= form.collection_select :category_id, Category.order(:name),:id,:name %>
+  </div>
+  <%= form.hidden_field :store_id, value: @item.store_id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

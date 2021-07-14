@@ -1,0 +1,6 @@
+<h2>Editing item</h2>
+
+<%= render 'form', item: @item %>
+
+<%= link_to 'Show', store_item_path(id: @item.id, store_id: @item.store_id) %> |
+<%= link_to 'Back', store_items_path(store_id: @item.store_id) %>
