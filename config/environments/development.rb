@@ -71,14 +71,20 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
 
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 25,
-    domain: '*',
-    user_name: '*',
-    password: '*',
-    enable_starttls_auto: true,
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'p17011994@gmail.com',
+    :password             => 'avsp@5455',
+    :authentication       => "plain",
+    :authentication => :login,
+    :enable_starttls_auto => true
   }
+  config.action_mailer.raise_delivery_errors = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
